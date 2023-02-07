@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TNETestApp.Domain.Models;
-using TNETestApp.Infrastructure.EntityFramework.EntityModels;
 
 namespace TNETestApp.Infrastructure
 {
@@ -22,7 +21,8 @@ namespace TNETestApp.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CompanyEntityModel).Assembly);
+            modelBuilder.Entity<MeteringDevice>().HasKey(x => new { x.MeasuringPointId, x.DeliveryPointId });
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(Company).Assembly);
         }
     }
 }

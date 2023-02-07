@@ -22,14 +22,15 @@ namespace TNETestApp.Services.ElectricityMeters
             var electricityMeters = await _context.ElectricityMeters.AsNoTracking()
                 .Where(x => x.MeasuringPoint.ConsumerBuildingId == consumerBuildingId).ToListAsync(cancellationToken);
 
-            if (isOutOfVerification)
+            if (!isOutOfVerification)
             {
-                _logger.LogDebug("Selected Electricity Meters with out of date verefication");
-                return electricityMeters.Where(x => x.OutOfVerificationDate < DateTime.Now).ToList();
+                return electricityMeters;
+                
             }
             else
             {
-                return electricityMeters;
+                _logger.LogDebug("Selected Electricity Meters with out of date verefication");
+                return electricityMeters.Where(x => x.OutOfVerificationDate < DateTime.Now).ToList();
             }
         }
     }

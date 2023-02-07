@@ -22,14 +22,14 @@ namespace TNETestApp.Services.CurrentTransformers
 
             var currentTransformers = await _context.CurrentTransformers.AsNoTracking()
                  .Where(x => x.MeasuringPoint.ConsumerBuildingId == consumerBuildingId).ToListAsync(cancellationToken);
-            if (isOutOfVerification)
+            if (!isOutOfVerification)
             {
-                _logger.LogDebug("Selected Current Transformers with out of date verefication");
-                return currentTransformers.Where(x => x.OutOfVerificationDate < DateTime.Now).ToList();
+                return currentTransformers;
             }
             else
             {
-                return currentTransformers;
+                _logger.LogDebug("Selected Current Transformers with out of date verefication");
+                return currentTransformers.Where(x => x.OutOfVerificationDate < DateTime.Now).ToList();
             }
         }
     }

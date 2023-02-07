@@ -23,14 +23,15 @@ namespace TNETestApp.Services.VoltageTransformers
             var voltageTransformers = await _context.VoltageTransformers.AsNoTracking()
                 .Where(x => x.MeasuringPoint.ConsumerBuildingId == consumerBuildingId).ToListAsync(cancellationToken);
 
-            if (isOutOfVerification)
+            if (!isOutOfVerification)
             {
-                _logger.LogDebug("Selected Electricity Meters with out of date verefication");
-                return voltageTransformers.Where(x => x.OutOfVerificationDate < DateTime.Now).ToList();
+                return voltageTransformers;
+                
             }
             else
             {
-                return voltageTransformers;
+                _logger.LogDebug("Selected Electricity Meters with out of date verefication");
+                return voltageTransformers.Where(x => x.OutOfVerificationDate < DateTime.Now).ToList();
             }
         }
     }
