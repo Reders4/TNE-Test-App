@@ -14,9 +14,9 @@ namespace TNETestApp.Domain.Models
         public DateTime StartDate { get; set; }
         [Required]
         public DateTime EndDate { get; set; }
-        [ForeignKey("MeasuringPointId")]
+        [ForeignKey(nameof(MeasuringPointId))]
         public virtual MeasuringPoint MeasuringPoint { get; set; }
-        [ForeignKey("DeliveryPointId")]
+        [ForeignKey(nameof(DeliveryPointId))]
         public virtual DeliveryPoint DeliveryPoint { get; set; }
 
     }

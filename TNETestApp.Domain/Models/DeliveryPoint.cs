@@ -14,7 +14,7 @@ namespace TNETestApp.Domain.Models
         public int MaxPower { get; set; }
         [Required]
         public int ConsumerBuildingId { get; set; }
-        [ForeignKey("ConsumerBuildingId")]
+        [ForeignKey(nameof(ConsumerBuildingId))]
         public virtual ConsumerBuilding ConsumerBuilding { get; set; }
         public virtual ICollection<MeteringDevice> MeteringDevices { get; set; }
     }

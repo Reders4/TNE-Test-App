@@ -21,7 +21,7 @@ namespace TNETestApp.Domain.Models
         public double TransformerRatio { get; set; }
         [Required]
         public int MeasuringPointId { get; set; }
-        [ForeignKey("MeasuringPointId")]
+        [ForeignKey(nameof(MeasuringPointId))]
         public virtual MeasuringPoint MeasuringPoint { get; set; }
     }
 }

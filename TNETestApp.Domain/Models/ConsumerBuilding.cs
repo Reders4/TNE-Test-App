@@ -16,9 +16,9 @@ namespace TNETestApp.Domain.Models
         public int CompanyId { get; set; }
         public int? SubsidiaryCompanyId { get; set; }
 
-        [ForeignKey("CompanyId")]
+        [ForeignKey(nameof(CompanyId))]
         public virtual Company Company { get; set; }
-        [ForeignKey("SubsidiaryCompanyId")]
+        [ForeignKey(nameof(SubsidiaryCompanyId))]
         public virtual SubsidiaryCompany SubsidiaryCompany { get; set; }
 
         public virtual ICollection<MeasuringPoint> MeasuringPoints { get; set; }

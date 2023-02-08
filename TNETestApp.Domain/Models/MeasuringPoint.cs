@@ -12,7 +12,7 @@ namespace TNETestApp.Domain.Models
         public string Name { get; set; }
         [Required]
         public int ConsumerBuildingId { get; set; }
-        [ForeignKey("ConsumerBuildingId")]
+        [ForeignKey(nameof(ConsumerBuildingId))]
         public virtual ConsumerBuilding ConsumerBuilding { get; set; }
         public virtual ElectricityMeter ElectricityMeter { get; set; }
         public virtual CurrentTransformer CurrentTransformer { get; set; }

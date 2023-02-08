@@ -19,7 +19,7 @@ namespace TNETestApp.Domain.Models
         public DateTime OutOfVerificationDate { get; set; }
         [Required]
         public int MeasuringPointId { get; set; }
-        [ForeignKey("MeasuringPointId")]
+        [ForeignKey(nameof(MeasuringPointId))]
         public virtual MeasuringPoint MeasuringPoint { get; set; }
 
     }

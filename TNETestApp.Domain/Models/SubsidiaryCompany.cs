@@ -15,7 +15,7 @@ namespace TNETestApp.Domain.Models
         [Required]
         public int CompanyId { get; set; }
 
-        [ForeignKey("CompanyId")]
+        [ForeignKey(nameof(CompanyId))]
         public virtual Company Company { get; set; }
         public virtual ICollection<ConsumerBuilding> ConsumerBuildings { get; set; }
     }
